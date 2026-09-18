@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "TacoToosday"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TacoToosday/Pygame-Platformer.git",
+    "accountId": "44629e6a-e8a1-4c65-881a-6e6b4526a301"
+  }
+}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0025111558989621" />
+      <entry key="MS500" value="1.4683927263411662" />
+      <entry key="S2" value="3.0982870125603887" />
+      <entry key="S5" value="4.689368474550813" />
+      <entry key="S10" value="6.397000277318937" />
+      <entry key="S30" value="8.892589419337883" />
+      <entry key="S60" value="9.84852245045906" />
+      <entry key="M2" value="10.397252458065111" />
+      <entry key="M5" value="10.752058487769034" />
+      <entry key="M10" value="10.874857352527476" />
+      <entry key="M15" value="10.916308763008448" />
+      <entry key="M30" value="10.958022377322507" />
+      <entry key="H1" value="10.978978074336661" />
+      <entry key="H2" value="10.989480744383718" />
+      <entry key="H4" value="10.994738297217541" />
+      <entry key="D1" value="10.999122761194329" />
+      <entry key="W1" value="10.999874673107215" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.92187272373414" />
+      <entry key="MS500" value="1.425658537547165" />
+      <entry key="S2" value="3.073648590126192" />
+      <entry key="S5" value="4.675556382585244" />
+      <entry key="S10" value="6.387964727647694" />
+      <entry key="S30" value="8.888485271806871" />
+      <entry key="S60" value="9.84625510422491" />
+      <entry key="M2" value="10.396056413789882" />
+      <entry key="M5" value="10.751563856511627" />
+      <entry key="M10" value="10.874607224021666" />
+      <entry key="M15" value="10.916141377133954" />
+      <entry key="M30" value="10.957938365477645" />
+      <entry key="H1" value="10.97893598828385" />
+      <entry key="H2" value="10.989459681274067" />
+      <entry key="H4" value="10.99472776063556" />
+      <entry key="D1" value="10.999121004398576" />
+      <entry key="W1" value="10.999874422119273" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3JVvgFCP28OuD1EWdg2MYqjdvok" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/edward_graham/coding/Python Platformer",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment="" />
+      <created>1789759159893</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789759159893</updated>
+    </task>
+    <servers />
+  </component>
+</project>

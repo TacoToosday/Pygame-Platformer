@@ -1,3 +1,8 @@
+
+# IDE projects, random stuff
+.idea # PyCharm (JetBrains)
+.vs_code # Visual Studio Code
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

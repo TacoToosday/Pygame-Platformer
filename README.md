@@ -6,8 +6,8 @@ A platformer game built with Python and Pygame.
 
 ### Prerequisites
 
-- Python 3.10 or newer, preferably Python 3.14.2
-- Pygame
+- Python 3.10 or newer, ships with a Python 3.14.2 .venv
+- Pygame (.venv has installed)
 
 ### Installation
 
