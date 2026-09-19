@@ -7,11 +7,8 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ruff.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/lib/python3.14/site-packages/pgzero/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/lib/python3.14/site-packages/pgzero/__init__.py" afterDir="false" />
+    <list default="true" id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment=".idea files (should be ignored by the .gitignore)&#10;main loop for the game">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +20,13 @@
     <persistenceIdMap>
       <entry key="_/Users/edward_graham/coding/Python Platformer" value="3JYqcOANOMzimwmdERu3kgJxEFJ" />
     </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,23 +49,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.8235910178150578" />
-      <entry key="MS500" value="1.980591457871218" />
-      <entry key="S2" value="2.7522466595487804" />
-      <entry key="S5" value="4.231911517910305" />
-      <entry key="S10" value="6.093527361014227" />
-      <entry key="S30" value="10.961632208085126" />
-      <entry key="S60" value="16.43370034625128" />
-      <entry key="M2" value="24.495251657394196" />
-      <entry key="M5" value="34.96547158401033" />
-      <entry key="M10" value="40.29533629245681" />
-      <entry key="M15" value="42.359869809686096" />
-      <entry key="M30" value="44.589854598130664" />
-      <entry key="H1" value="45.77143581549382" />
-      <entry key="H2" value="46.37971882149925" />
-      <entry key="H4" value="46.68834355254127" />
-      <entry key="D1" value="46.947845342859694" />
-      <entry key="W1" value="46.99254412682205" />
+      <entry key="MS100" value="1.5412648101307798" />
+      <entry key="MS500" value="3.051876784717747" />
+      <entry key="S2" value="6.199265292438178" />
+      <entry key="S5" value="9.079849840377014" />
+      <entry key="S10" value="10.742351886006578" />
+      <entry key="S30" value="12.190799111644408" />
+      <entry key="S60" value="14.035830472195157" />
+      <entry key="M2" value="26.167364857073796" />
+      <entry key="M5" value="67.78547044562909" />
+      <entry key="M10" value="102.73133475665816" />
+      <entry key="M15" value="119.08127698940572" />
+      <entry key="M30" value="138.61418744760658" />
+      <entry key="H1" value="149.77804740343282" />
+      <entry key="H2" value="155.75028583859742" />
+      <entry key="H4" value="158.8396118624564" />
+      <entry key="D1" value="161.4682601218148" />
+      <entry key="W1" value="161.92391352979703" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +87,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8950257739158699" />
-      <entry key="MS500" value="1.0436503496181404" />
-      <entry key="S2" value="1.9936978919861663" />
-      <entry key="S5" value="3.5238501754124973" />
-      <entry key="S10" value="5.5009699566684045" />
-      <entry key="S30" value="10.620731615581265" />
-      <entry key="S60" value="16.213095885580106" />
-      <entry key="M2" value="24.356650121634843" />
-      <entry key="M5" value="34.89732521449428" />
-      <entry key="M10" value="40.258248865118745" />
-      <entry key="M15" value="42.334385229592534" />
-      <entry key="M30" value="44.57670714639009" />
-      <entry key="H1" value="45.76475574519247" />
-      <entry key="H2" value="46.376351540703695" />
-      <entry key="H4" value="46.68665301649039" />
-      <entry key="D1" value="46.947562621886206" />
-      <entry key="W1" value="46.99250371438483" />
+      <entry key="MS100" value="1.4784412207400384" />
+      <entry key="MS500" value="3.02353362068342" />
+      <entry key="S2" value="6.185358334084715" />
+      <entry key="S5" value="9.07254731119694" />
+      <entry key="S10" value="10.738240867715458" />
+      <entry key="S30" value="12.189259838456055" />
+      <entry key="S60" value="14.032869059592993" />
+      <entry key="M2" value="26.15246095978198" />
+      <entry key="M5" value="67.75505606257605" />
+      <entry key="M10" value="102.70448750369415" />
+      <entry key="M15" value="119.05958673688825" />
+      <entry key="M30" value="138.6010267413457" />
+      <entry key="H1" value="149.77079481585056" />
+      <entry key="H2" value="155.74647833430018" />
+      <entry key="H4" value="158.8376610612493" />
+      <entry key="D1" value="161.46792830044015" />
+      <entry key="W1" value="161.9238659609266" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -125,32 +129,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python..venv v3.14.2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/edward_graham/coding/Python Platformer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python..venv v3.14.2.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/edward_graham/coding/Python Platformer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name=".venv v3.14.2" type="PythonConfigurationType" factoryName="Python">
       <module name="Python Platformer" />
@@ -193,9 +196,30 @@
       <option name="presentableId" value="Default" />
       <updated>1789759159893</updated>
     </task>
+    <task id="LOCAL-00001" summary=".idea files (should be ignored by the .gitignore)&#10;main loop for the game">
+      <option name="closed" value="true" />
+      <created>1789849219166</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789849219166</updated>
+    </task>
+    <task id="LOCAL-00002" summary=".idea files (should be ignored by the .gitignore)&#10;main loop for the game">
+      <option name="closed" value="true" />
+      <created>1789849228857</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789849228857</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=".idea files (should be ignored by the .gitignore)&#10;main loop for the game" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea files (should be ignored by the .gitignore)&#10;main loop for the game" />
   </component>
 </project>
