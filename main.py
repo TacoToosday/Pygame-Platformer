@@ -1,13 +1,12 @@
 # Main Python file for the platformer game
 import os
 import platform
+import pygame
 
 # Use a headless dummy video driver when running without a desktop display
 # (for example in CI or some Linux shells). Keep normal desktop behavior intact.
 if platform.system() == "Linux" and not os.environ.get("DISPLAY") and not os.environ.get("WAYLAND_DISPLAY"):
     os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
-
-import pygame
 
 running = True
 assets = os.path.join(os.path.dirname(__file__), "assets")
