@@ -48,23 +48,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0001040144680586" />
-      <entry key="S2" value="1.2228576299167053" />
-      <entry key="S5" value="2.4140754199730026" />
-      <entry key="S10" value="3.837302936329918" />
-      <entry key="S30" value="5.64597687115512" />
-      <entry key="S60" value="6.280861790133662" />
-      <entry key="M2" value="7.128705844257256" />
-      <entry key="M5" value="20.80640789327844" />
-      <entry key="M10" value="53.54268339776988" />
-      <entry key="M15" value="77.2700220467703" />
-      <entry key="M30" value="113.49393093941379" />
-      <entry key="H1" value="138.28546340907053" />
-      <entry key="H2" value="152.81936749880464" />
-      <entry key="H4" value="160.69243333577057" />
-      <entry key="D1" value="167.58421099165318" />
-      <entry key="W1" value="168.7969667973225" />
+      <entry key="MS100" value="1.0000020674484698" />
+      <entry key="MS500" value="1.097485719362742" />
+      <entry key="S2" value="2.003836945531953" />
+      <entry key="S5" value="3.436167394317073" />
+      <entry key="S10" value="5.065586019858355" />
+      <entry key="S30" value="7.265127454581232" />
+      <entry key="S60" value="8.068288415450652" />
+      <entry key="M2" value="9.008633037639425" />
+      <entry key="M5" value="22.673949717751967" />
+      <entry key="M10" value="55.375420299079224" />
+      <entry key="M15" value="79.10966018074444" />
+      <entry key="M30" value="115.37644191025636" />
+      <entry key="H1" value="140.21394783367376" />
+      <entry key="H2" value="154.7798655758606" />
+      <entry key="H4" value="162.6716681790242" />
+      <entry key="D1" value="169.58060215953668" />
+      <entry key="W1" value="170.79644752991817" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -86,23 +86,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9395227492140118" />
-      <entry key="MS500" value="0.987703343805951" />
-      <entry key="S2" value="1.218826139374839" />
-      <entry key="S5" value="2.4101710172638358" />
-      <entry key="S10" value="3.8337920772285634" />
-      <entry key="S30" value="5.644090967243834" />
-      <entry key="S60" value="6.279788014388059" />
-      <entry key="M2" value="7.127846199137623" />
-      <entry key="M5" value="20.799905993589327" />
-      <entry key="M10" value="53.53037920493112" />
-      <entry key="M15" value="77.25713230228295" />
-      <entry key="M30" value="113.48377679810984" />
-      <entry key="H1" value="138.2790852839299" />
-      <entry key="H2" value="152.81579241644587" />
-      <entry key="H4" value="160.69054061082971" />
-      <entry key="D1" value="167.58388013560395" />
-      <entry key="W1" value="168.79691914424035" />
+      <entry key="MS100" value="1.973716384812126E-5" />
+      <entry key="MS500" value="0.1634164038159886" />
+      <entry key="S2" value="1.4603727063753835" />
+      <entry key="S5" value="3.1594011047738078" />
+      <entry key="S10" value="4.913591093467265" />
+      <entry key="S30" value="7.210701286061652" />
+      <entry key="S60" value="8.040531243491943" />
+      <entry key="M2" value="8.99432966319863" />
+      <entry key="M5" value="22.662081162381984" />
+      <entry key="M10" value="55.36044669458802" />
+      <entry key="M15" value="79.09499115461426" />
+      <entry key="M30" value="115.36539487472639" />
+      <entry key="H1" value="140.20712120837186" />
+      <entry key="H2" value="154.77606549452815" />
+      <entry key="H4" value="162.66966273120596" />
+      <entry key="D1" value="169.58025248188216" />
+      <entry key="W1" value="170.79639718714398" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -132,32 +132,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python..venv v3.14.2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/edward_graham/coding/Python Platformer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python..venv v3.14.2.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/edward_graham/coding/Python Platformer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "python.external.tools.group.settings",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name=".venv v3.14.2" type="PythonConfigurationType" factoryName="Python">
       <module name="Python Platformer" />
@@ -240,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789850912155</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="main.py changes">
+      <option name="closed" value="true" />
+      <created>1789851522680</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1789851522681</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
