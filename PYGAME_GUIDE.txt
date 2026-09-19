@@ -1,3 +1,4 @@
+[Written by Copilot]
 PRACTICAL GUIDE TO PYGAME
 =========================
 

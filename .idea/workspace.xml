@@ -7,8 +7,8 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment=".idea files (should be ignored by the .gitignore)&#10;main loop for the game">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="de70b1d8-6281-4c4b-a6a4-02c2afb1d21d" name="Changes" comment="Pygame Guide (Copilot)&#10;Changes to main.py">
+      <change beforePath="$PROJECT_DIR$/PYGAME_GUIDE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PYGAME_GUIDE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,23 +49,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5412648101307798" />
-      <entry key="MS500" value="3.051876784717747" />
-      <entry key="S2" value="6.199265292438178" />
-      <entry key="S5" value="9.079849840377014" />
-      <entry key="S10" value="10.742351886006578" />
-      <entry key="S30" value="12.190799111644408" />
-      <entry key="S60" value="14.035830472195157" />
-      <entry key="M2" value="26.167364857073796" />
-      <entry key="M5" value="67.78547044562909" />
-      <entry key="M10" value="102.73133475665816" />
-      <entry key="M15" value="119.08127698940572" />
-      <entry key="M30" value="138.61418744760658" />
-      <entry key="H1" value="149.77804740343282" />
-      <entry key="H2" value="155.75028583859742" />
-      <entry key="H4" value="158.8396118624564" />
-      <entry key="D1" value="161.4682601218148" />
-      <entry key="W1" value="161.92391352979703" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0001040144680586" />
+      <entry key="S2" value="1.2228576299167053" />
+      <entry key="S5" value="2.4140754199730026" />
+      <entry key="S10" value="3.837302936329918" />
+      <entry key="S30" value="5.64597687115512" />
+      <entry key="S60" value="6.280861790133662" />
+      <entry key="M2" value="7.128705844257256" />
+      <entry key="M5" value="20.80640789327844" />
+      <entry key="M10" value="53.54268339776988" />
+      <entry key="M15" value="77.2700220467703" />
+      <entry key="M30" value="113.49393093941379" />
+      <entry key="H1" value="138.28546340907053" />
+      <entry key="H2" value="152.81936749880464" />
+      <entry key="H4" value="160.69243333577057" />
+      <entry key="D1" value="167.58421099165318" />
+      <entry key="W1" value="168.7969667973225" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -87,24 +87,27 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4784412207400384" />
-      <entry key="MS500" value="3.02353362068342" />
-      <entry key="S2" value="6.185358334084715" />
-      <entry key="S5" value="9.07254731119694" />
-      <entry key="S10" value="10.738240867715458" />
-      <entry key="S30" value="12.189259838456055" />
-      <entry key="S60" value="14.032869059592993" />
-      <entry key="M2" value="26.15246095978198" />
-      <entry key="M5" value="67.75505606257605" />
-      <entry key="M10" value="102.70448750369415" />
-      <entry key="M15" value="119.05958673688825" />
-      <entry key="M30" value="138.6010267413457" />
-      <entry key="H1" value="149.77079481585056" />
-      <entry key="H2" value="155.74647833430018" />
-      <entry key="H4" value="158.8376610612493" />
-      <entry key="D1" value="161.46792830044015" />
-      <entry key="W1" value="161.9238659609266" />
+      <entry key="MS100" value="0.9395227492140118" />
+      <entry key="MS500" value="0.987703343805951" />
+      <entry key="S2" value="1.218826139374839" />
+      <entry key="S5" value="2.4101710172638358" />
+      <entry key="S10" value="3.8337920772285634" />
+      <entry key="S30" value="5.644090967243834" />
+      <entry key="S60" value="6.279788014388059" />
+      <entry key="M2" value="7.127846199137623" />
+      <entry key="M5" value="20.799905993589327" />
+      <entry key="M10" value="53.53037920493112" />
+      <entry key="M15" value="77.25713230228295" />
+      <entry key="M30" value="113.48377679810984" />
+      <entry key="H1" value="138.2790852839299" />
+      <entry key="H2" value="152.81579241644587" />
+      <entry key="H4" value="160.69054061082971" />
+      <entry key="D1" value="167.58388013560395" />
+      <entry key="W1" value="168.79691914424035" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
@@ -121,7 +124,8 @@
             <option name="modelValue" value="auto" />
           </model>
         </option>
-        <option name="targetType" value="LOCAL" />
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
       </template>
     </option>
   </component>
@@ -150,6 +154,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "run.code.analysis.last.selected.profile": "aDefault",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true"
   }
@@ -212,7 +217,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789849228857</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Pygame Guide (Copilot)&#10;Changes to main.py">
+      <option name="closed" value="true" />
+      <created>1789850200698</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789850200698</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Pygame Guide (Copilot)&#10;Changes to main.py">
+      <option name="closed" value="true" />
+      <created>1789850208445</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789850208445</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +241,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value=".idea files (should be ignored by the .gitignore)&#10;main loop for the game" />
-    <option name="LAST_COMMIT_MESSAGE" value=".idea files (should be ignored by the .gitignore)&#10;main loop for the game" />
+    <MESSAGE value="Pygame Guide (Copilot)&#10;Changes to main.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pygame Guide (Copilot)&#10;Changes to main.py" />
   </component>
 </project>
