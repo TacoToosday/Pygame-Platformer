@@ -1,0 +1,1012 @@
+PRACTICAL GUIDE TO PYGAME
+=========================
+
+Pygame is a Python library for making 2D games. Most Pygame programs follow
+this pattern:
+
+1. Import and initialize Pygame.
+2. Create a window.
+3. Load assets and create game objects.
+4. Run a game loop.
+5. Handle events.
+6. Update game state.
+7. Draw the game.
+8. Quit cleanly.
+
+
+1. BASIC SETUP
+--------------
+
+    import pygame
+    import os
+
+    pygame.init()
+
+    WIDTH = 800
+    HEIGHT = 600
+
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("My Pygame Game")
+
+    clock = pygame.time.Clock()
+
+`pygame.init()` initializes Pygame modules. The window is created with
+`pygame.display.set_mode()`. The clock controls the frame rate.
+
+
+2. THE GAME LOOP
+----------------
+
+The game loop keeps the window open and repeatedly updates the game:
+
+    running = True
+
+    while running:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        # Update game objects
+
+        # Draw the screen
+        window.fill((30, 30, 30))
+        pygame.display.flip()
+
+        # Limit the game to 60 frames per second
+        clock.tick(60)
+
+    pygame.quit()
+
+The loop should generally follow this order:
+
+    Handle input -> Update game -> Draw game -> Display frame
+
+Do not create functions, images, or objects repeatedly inside the loop unless
+they are specifically meant to be recreated.
+
+
+3. COLORS
+---------
+
+Pygame colors use RGB values:
+
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+    RED = (255, 0, 0)
+    GREEN = (0, 255, 0)
+    BLUE = (0, 0, 255)
+
+Each value ranges from 0 to 255.
+
+
+4. DRAWING SHAPES
+-----------------
+
+    pygame.draw.rect(window, RED, (100, 100, 200, 50))
+    pygame.draw.circle(window, BLUE, (400, 300), 30)
+    pygame.draw.line(window, WHITE, (0, 0), (800, 600), 3)
+
+A rectangle can also be represented using `pygame.Rect`:
+
+    player_rect = pygame.Rect(100, 400, 40, 60)
+    pygame.draw.rect(window, GREEN, player_rect)
+
+A `Rect` stores position and size and is useful for movement and collisions.
+
+
+5. KEYBOARD INPUT
+-----------------
+
+For one-time key presses, use events:
+
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+
+For movement while a key is held, use `pygame.key.get_pressed()`:
+
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_LEFT]:
+        player_rect.x -= 5
+
+    if keys[pygame.K_RIGHT]:
+        player_rect.x += 5
+
+You can also use A and D:
+
+    if keys[pygame.K_a]:
+        player_rect.x -= 5
+
+    if keys[pygame.K_d]:
+        player_rect.x += 5
+
+
+6. TIME AND FRAME RATE
+----------------------
+
+Using a fixed movement value can make games behave differently at different
+frame rates. A better approach uses `dt`, the time since the previous frame:
+
+    dt = clock.tick(60) / 1000
+
+Movement can then be measured in pixels per second:
+
+    speed = 300
+
+    if keys[pygame.K_RIGHT]:
+        player_rect.x += speed * dt
+
+For floating-point positions, use separate x and y values, then update the
+rectangle:
+
+    player_x = 100.0
+    player_y = 400.0
+
+    player_x += speed * dt
+    player_rect.x = round(player_x)
+
+
+7. LOADING ASSETS WITH OS
+-------------------------
+
+Use a path relative to `main.py`:
+
+    assets = os.path.join(os.path.dirname(__file__), "assets")
+
+This works even when you run the game from a different working directory.
+
+Load an image before the game loop:
+
+    player_image_path = os.path.join(assets, "player.png")
+    player_image = pygame.image.load(player_image_path).convert_alpha()
+
+Draw it inside the loop:
+
+    window.blit(player_image, player_rect)
+
+For images without transparency, use:
+
+    image = pygame.image.load(path).convert()
+
+For images with transparent backgrounds, use:
+
+    image = pygame.image.load(path).convert_alpha()
+
+A useful helper is:
+
+    def asset_path(filename):
+        return os.path.join(assets, filename)
+
+    player_image = pygame.image.load(
+        asset_path("player.png")
+    ).convert_alpha()
+
+
+8. SCALING IMAGES
+-----------------
+
+    player_image = pygame.transform.scale(player_image, (50, 70))
+
+For smoother scaling:
+
+    player_image = pygame.transform.smoothscale(player_image, (50, 70))
+
+
+9. PLAYER MOVEMENT
+------------------
+
+    player_rect = pygame.Rect(100, 400, 40, 60)
+    player_speed = 300
+
+Inside the loop:
+
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_LEFT]:
+        player_rect.x -= round(player_speed * dt)
+
+    if keys[pygame.K_RIGHT]:
+        player_rect.x += round(player_speed * dt)
+
+Keep the player inside the screen:
+
+    player_rect.left = max(player_rect.left, 0)
+    player_rect.right = min(player_rect.right, WIDTH)
+
+
+10. GRAVITY AND JUMPING
+-----------------------
+
+Gravity constantly increases downward velocity:
+
+    gravity = 1200
+    vertical_velocity = 0
+    jump_strength = -500
+    on_ground = False
+
+Update vertical movement:
+
+    vertical_velocity += gravity * dt
+    player_rect.y += vertical_velocity * dt
+
+Jump only when on the ground:
+
+    if keys[pygame.K_SPACE] and on_ground:
+        vertical_velocity = jump_strength
+        on_ground = False
+
+A simple floor collision:
+
+    floor_y = 500
+
+    if player_rect.bottom >= floor_y:
+        player_rect.bottom = floor_y
+        vertical_velocity = 0
+        on_ground = True
+
+
+11. COLLISION DETECTION
+-----------------------
+
+Use `colliderect()`:
+
+    platform = pygame.Rect(200, 450, 250, 30)
+
+    if player_rect.colliderect(platform):
+        print("Collision!")
+
+For multiple platforms:
+
+    platforms = [
+        pygame.Rect(0, 550, 800, 50),
+        pygame.Rect(200, 450, 200, 30),
+        pygame.Rect(500, 350, 180, 30),
+    ]
+
+Draw them:
+
+    for platform in platforms:
+        pygame.draw.rect(window, GREEN, platform)
+
+
+12. FUNCTIONS
+-------------
+
+Define functions outside the loop. Call them inside the loop:
+
+    def handle_events():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+        return True
+
+
+    def update_player(player_rect, dt):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_LEFT]:
+            player_rect.x -= round(300 * dt)
+
+        if keys[pygame.K_RIGHT]:
+            player_rect.x += round(300 * dt)
+
+
+    def draw_game(window, player_rect):
+        window.fill((30, 30, 30))
+        pygame.draw.rect(window, BLUE, player_rect)
+        pygame.display.flip()
+
+Then:
+
+    while running:
+        running = handle_events()
+        update_player(player_rect, dt)
+        draw_game(window, player_rect)
+        clock.tick(60)
+
+Functions should usually receive the data they need instead of relying on many
+global variables.
+
+
+13. TEXT
+--------
+
+Create a font:
+
+    font = pygame.font.Font(None, 36)
+
+Render text:
+
+    score_text = font.render("Score: 10", True, WHITE)
+
+Draw the text:
+
+    window.blit(score_text, (20, 20))
+
+For a specific font file:
+
+    font_path = os.path.join(assets, "font.ttf")
+    font = pygame.font.Font(font_path, 32)
+
+
+14. SPRITES
+-----------
+
+For larger games, use `pygame.sprite.Sprite`:
+
+    class Player(pygame.sprite.Sprite):
+        def __init__(self):
+            super().__init__()
+
+            self.image = pygame.Surface((40, 60))
+            self.image.fill(BLUE)
+            self.rect = self.image.get_rect()
+            self.rect.topleft = (100, 400)
+
+        def update(self, dt):
+            keys = pygame.key.get_pressed()
+
+            if keys[pygame.K_LEFT]:
+                self.rect.x -= round(300 * dt)
+
+            if keys[pygame.K_RIGHT]:
+                self.rect.x += round(300 * dt)
+
+Create a sprite group:
+
+    player = Player()
+    all_sprites = pygame.sprite.Group(player)
+
+Update and draw the group:
+
+    all_sprites.update(dt)
+    all_sprites.draw(window)
+
+Sprites are useful for players, enemies, bullets, items, and platforms.
+
+
+15. SOUND AND MUSIC
+-------------------
+
+Initialize the mixer:
+
+    pygame.mixer.init()
+
+Load a sound before the loop:
+
+    jump_sound = pygame.mixer.Sound(
+        os.path.join(assets, "jump.wav")
+    )
+
+Play it when the player jumps:
+
+    jump_sound.play()
+
+For background music:
+
+    music_path = os.path.join(assets, "music.ogg")
+    pygame.mixer.music.load(music_path)
+    pygame.mixer.music.play(-1)
+
+`-1` makes the music loop continuously.
+
+
+16. ANIMATION
+-------------
+
+If an image contains multiple frames, switch images based on time:
+
+    animation_timer += dt
+
+    if animation_timer >= 0.1:
+        animation_timer = 0
+        animation_index = (animation_index + 1) % len(animation_frames)
+
+    player_image = animation_frames[animation_index]
+
+The `%` operator loops the index back to zero.
+
+
+17. GAME STATES
+---------------
+
+Games often have menus, gameplay, and game-over screens:
+
+    game_state = "menu"
+
+Inside the loop:
+
+    if game_state == "menu":
+        draw_menu()
+
+    elif game_state == "playing":
+        update_game(dt)
+        draw_game()
+
+    elif game_state == "game_over":
+        draw_game_over()
+
+Change state when the player presses a button:
+
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_RETURN:
+            game_state = "playing"
+
+
+18. RECOMMENDED PROJECT STRUCTURE
+----------------------------------
+
+    Pygame-Platformer/
+    |-- main.py
+    |-- assets/
+        |-- player.png
+        |-- platform.png
+        |-- jump.wav
+    |-- README.md
+
+As the game grows:
+
+    Pygame-Platformer/
+    |-- main.py
+    |-- settings.py
+    |-- player.py
+    |-- level.py
+    |-- assets/
+        |-- images/
+        |-- sounds/
+        |-- music/
+    |-- README.md
+
+
+19. COMPLETE STARTER EXAMPLE
+----------------------------
+
+    import pygame
+
+    pygame.init()
+
+    WIDTH = 800
+    HEIGHT = 600
+    FPS = 60
+
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Pygame Platformer")
+
+    clock = pygame.time.Clock()
+
+    WHITE = (255, 255, 255)
+    BLUE = (50, 100, 255)
+    GREEN = (50, 200, 80)
+    SKY_BLUE = (120, 200, 255)
+
+    player_rect = pygame.Rect(100, 400, 40, 60)
+    player_x = float(player_rect.x)
+    player_y = float(player_rect.y)
+
+    horizontal_speed = 300
+    vertical_velocity = 0
+    gravity = 1200
+    jump_strength = -500
+    on_ground = False
+
+    platforms = [
+        pygame.Rect(0, 550, WIDTH, 50),
+        pygame.Rect(200, 450, 220, 30),
+        pygame.Rect(520, 350, 180, 30),
+    ]
+
+
+    def handle_events():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+
+        return True
+
+
+    def update_player(dt):
+        global player_x, player_y
+        global vertical_velocity, on_ground
+
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            player_x -= horizontal_speed * dt
+
+        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+            player_x += horizontal_speed * dt
+
+        if (keys[pygame.K_SPACE] or keys[pygame.K_w]) and on_ground:
+            vertical_velocity = jump_strength
+            on_ground = False
+
+        vertical_velocity += gravity * dt
+        player_y += vertical_velocity * dt
+
+        player_rect.x = round(player_x)
+        player_rect.y = round(player_y)
+
+        on_ground = False
+
+        for platform in platforms:
+            if (
+                vertical_velocity >= 0
+                and player_rect.colliderect(platform)
+                and player_rect.bottom - vertical_velocity * dt <= platform.top
+            ):
+                player_rect.bottom = platform.top
+                player_y = player_rect.y
+                vertical_velocity = 0
+                on_ground = True
+
+        player_rect.left = max(player_rect.left, 0)
+        player_rect.right = min(player_rect.right, WIDTH)
+        player_x = player_rect.x
+
+
+    def draw_game():
+        window.fill(SKY_BLUE)
+
+        for platform in platforms:
+            pygame.draw.rect(window, GREEN, platform)
+
+        pygame.draw.rect(window, BLUE, player_rect)
+
+        pygame.display.flip()
+
+
+    running = True
+
+    while running:
+        dt = clock.tick(FPS) / 1000
+
+        running = handle_events()
+        update_player(dt)
+        draw_game()
+
+    pygame.quit()
+
+
+IMPORTANT RULES
+---------------
+
+* Define functions and load assets before the game loop.
+* Process `pygame.event.get()` every frame.
+* Keep updating and drawing inside the loop.
+* Use `pygame.display.flip()` or `pygame.display.update()` once per frame.
+* Use `clock.tick(60)` to limit the frame rate.
+* Use `pygame.Rect` for positions and collisions.
+* Use `dt` for consistent movement.
+* Use paths based on `__file__` for reliable asset loading.
+* Call `pygame.quit()` after the loop.
+
+
+20. MOUSE INPUT
+---------------
+
+Handle mouse clicks through events:
+
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                print("Left mouse button clicked")
+
+Read the current mouse position:
+
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+
+Check whether the mouse is over a rectangle:
+
+    button_rect = pygame.Rect(300, 250, 200, 60)
+
+    if button_rect.collidepoint(mouse_x, mouse_y):
+        print("Mouse is over the button")
+
+
+21. BUTTONS
+-----------
+
+A simple button can be made using a rectangle and text:
+
+    button_rect = pygame.Rect(300, 250, 200, 60)
+    mouse_position = pygame.mouse.get_pos()
+
+    if button_rect.collidepoint(mouse_position):
+        button_color = (80, 160, 255)
+    else:
+        button_color = (50, 100, 200)
+
+    pygame.draw.rect(window, button_color, button_rect)
+
+    button_text = font.render("Start Game", True, WHITE)
+    text_rect = button_text.get_rect(center=button_rect.center)
+    window.blit(button_text, text_rect)
+
+Trigger an action when the button is clicked:
+
+    if (
+        event.type == pygame.MOUSEBUTTONDOWN
+        and event.button == 1
+        and button_rect.collidepoint(event.pos)
+    ):
+        game_state = "playing"
+
+
+22. CAMERA SCROLLING
+--------------------
+
+For a level larger than the window, use a camera offset:
+
+    camera_x = 0
+    camera_y = 0
+
+    screen_x = world_x - camera_x
+    screen_y = world_y - camera_y
+
+Draw a world object using the offset:
+
+    screen_rect = player_rect.move(-camera_x, -camera_y)
+    window.blit(player_image, screen_rect)
+
+Follow the player horizontally:
+
+    camera_x = player_rect.centerx - WIDTH // 2
+    camera_x = max(0, min(camera_x, LEVEL_WIDTH - WIDTH))
+
+Keep world positions separate from screen positions. The camera should change
+how objects are drawn, not permanently change their positions in the level.
+
+
+23. TILEMAPS AND LEVELS
+-----------------------
+
+A simple level can be represented by text:
+
+    level_map = [
+        "........................",
+        "........................",
+        "..............P.........",
+        "........................",
+        ".....#####..............",
+        "########################",
+    ]
+
+Each character can represent an object:
+
+    TILE_SIZE = 32
+
+    for row_index, row in enumerate(level_map):
+        for column_index, character in enumerate(row):
+            x = column_index * TILE_SIZE
+            y = row_index * TILE_SIZE
+
+            if character == "#":
+                platforms.append(
+                    pygame.Rect(x, y, TILE_SIZE, TILE_SIZE)
+                )
+            elif character == "P":
+                player_rect.topleft = (x, y)
+
+This approach makes it easy to design small levels without hard-coding every
+rectangle separately.
+
+
+24. MOVING PLATFORMS
+--------------------
+
+Store a platform's starting position, movement distance, and speed:
+
+    moving_platform = {
+        "rect": pygame.Rect(300, 400, 150, 25),
+        "start_x": 300,
+        "distance": 200,
+        "speed": 100,
+        "direction": 1,
+    }
+
+Update it each frame:
+
+    platform = moving_platform
+    platform["rect"].x += platform["speed"] * platform["direction"] * dt
+
+    if platform["rect"].x >= platform["start_x"] + platform["distance"]:
+        platform["rect"].x = platform["start_x"] + platform["distance"]
+        platform["direction"] = -1
+
+    if platform["rect"].x <= platform["start_x"]:
+        platform["rect"].x = platform["start_x"]
+        platform["direction"] = 1
+
+
+25. PLAYER COLLISION DETAILS
+----------------------------
+
+For reliable platformer collisions, resolve one axis at a time:
+
+    player_rect.x += horizontal_velocity * dt
+
+    for platform in platforms:
+        if player_rect.colliderect(platform):
+            if horizontal_velocity > 0:
+                player_rect.right = platform.left
+            elif horizontal_velocity < 0:
+                player_rect.left = platform.right
+
+    player_rect.y += vertical_velocity * dt
+    on_ground = False
+
+    for platform in platforms:
+        if player_rect.colliderect(platform):
+            if vertical_velocity > 0:
+                player_rect.bottom = platform.top
+                on_ground = True
+            elif vertical_velocity < 0:
+                player_rect.top = platform.bottom
+
+            vertical_velocity = 0
+
+Resolving horizontal and vertical movement separately prevents the player from
+getting stuck as easily in corners.
+
+
+26. HEALTH, DAMAGE, AND INVINCIBILITY
+-------------------------------------
+
+Keep player health and a short damage cooldown:
+
+    player_health = 3
+    damage_cooldown = 0
+
+Reduce the cooldown over time:
+
+    damage_cooldown = max(0, damage_cooldown - dt)
+
+Apply damage only when the cooldown is zero:
+
+    if player_rect.colliderect(enemy_rect) and damage_cooldown == 0:
+        player_health -= 1
+        damage_cooldown = 1.0
+
+During the cooldown, blink the player by drawing it only on alternating
+intervals:
+
+    if damage_cooldown == 0 or int(damage_cooldown * 10) % 2 == 0:
+        window.blit(player_image, player_rect)
+
+
+27. PARTICLES
+-------------
+
+A particle can be represented by a position, velocity, color, and lifetime:
+
+    particles = []
+
+    particles.append({
+        "position": [player_rect.centerx, player_rect.centery],
+        "velocity": [-50, -100],
+        "lifetime": 0.5,
+    })
+
+Update particles:
+
+    for particle in particles[:]:
+        particle["position"][0] += particle["velocity"][0] * dt
+        particle["position"][1] += particle["velocity"][1] * dt
+        particle["lifetime"] -= dt
+
+        if particle["lifetime"] <= 0:
+            particles.remove(particle)
+
+Draw them:
+
+    for particle in particles:
+        x, y = particle["position"]
+        pygame.draw.circle(window, WHITE, (round(x), round(y)), 3)
+
+Using `particles[:]` iterates over a copy so items can safely be removed from
+the original list.
+
+
+28. PAUSING THE GAME
+--------------------
+
+Use a pause flag or a separate game state:
+
+    paused = False
+
+    if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+        paused = not paused
+
+Only update gameplay while the game is not paused:
+
+    if not paused:
+        update_player(dt)
+        update_enemies(dt)
+
+You can still draw the game and then draw a pause message on top:
+
+    if paused:
+        pause_text = font.render("PAUSED", True, WHITE)
+        pause_rect = pause_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+        window.blit(pause_text, pause_rect)
+
+
+29. SAVING HIGH SCORES
+----------------------
+
+Use a text file for a simple high score:
+
+    score_path = os.path.join(os.path.dirname(__file__), "highscore.txt")
+
+    try:
+        with open(score_path, "r", encoding="utf-8") as file:
+            high_score = int(file.read())
+    except FileNotFoundError:
+        high_score = 0
+
+Save a new high score:
+
+    if score > high_score:
+        with open(score_path, "w", encoding="utf-8") as file:
+            file.write(str(score))
+
+For more complex save data, use JSON:
+
+    import json
+
+    save_data = {"high_score": score, "unlocked_level": 2}
+
+    with open("save.json", "w", encoding="utf-8") as file:
+        json.dump(save_data, file)
+
+
+30. RESIZABLE WINDOWS
+---------------------
+
+Create a resizable window:
+
+    window = pygame.display.set_mode(
+        (WIDTH, HEIGHT),
+        pygame.RESIZABLE
+    )
+
+Handle a resize event:
+
+    if event.type == pygame.VIDEORESIZE:
+        window = pygame.display.set_mode(
+            event.size,
+            pygame.RESIZABLE
+        )
+
+For a fixed-size game, it is usually easier to keep the logical game size
+constant and scale a separate surface to the window.
+
+
+31. FULLSCREEN MODE
+-------------------
+
+Create a fullscreen window:
+
+    window = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
+
+Toggle fullscreen:
+
+    fullscreen = False
+
+    if event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
+        fullscreen = not fullscreen
+
+        if fullscreen:
+            window = pygame.display.set_mode(
+                (WIDTH, HEIGHT),
+                pygame.FULLSCREEN
+            )
+        else:
+            window = pygame.display.set_mode((WIDTH, HEIGHT))
+
+
+32. DEBUGGING
+-------------
+
+Print values while testing:
+
+    print("Player position:", player_rect.topleft)
+    print("Velocity:", vertical_velocity)
+
+Draw collision rectangles:
+
+    pygame.draw.rect(window, (255, 0, 0), player_rect, 2)
+
+The final argument `2` draws only the outline. This is useful for finding
+collision bugs and checking whether an image and its rectangle line up.
+
+Useful checks include:
+
+* Is the event loop running every frame?
+* Is `pygame.display.flip()` called after drawing?
+* Are images loaded before the loop?
+* Are asset paths relative to `__file__`?
+* Is `dt` being used for movement?
+* Is the player rectangle positioned where you expect?
+* Is a collision being checked before or after movement?
+
+
+33. COMMON ERRORS
+-----------------
+
+`pygame.error: video system not initialized`
+
+Call `pygame.init()` before using the display.
+
+`FileNotFoundError` when loading an asset
+
+Use an absolute path built from the script location:
+
+    path = os.path.join(os.path.dirname(__file__), "assets", "player.png")
+
+`pygame.error: No video mode has been set`
+
+Create the display before calling `.convert()` or `.convert_alpha()` on an
+image.
+
+The window opens and closes immediately
+
+Use a `while running` loop and process the `pygame.QUIT` event.
+
+The game runs too fast or too slowly
+
+Use `clock.tick(FPS)` and multiply movement by `dt`.
+
+The image has a black background
+
+Load images with transparency using `.convert_alpha()`, and make sure the
+image file actually contains an alpha channel.
+
+The player falls through platforms
+
+Check the collision after moving, resolve the player's position by setting
+`player_rect.bottom = platform.top`, and reset vertical velocity.
+
+
+34. PERFORMANCE TIPS
+--------------------
+
+* Load images, sounds, and fonts once before the game loop.
+* Use `convert()` or `convert_alpha()` after loading images.
+* Avoid creating new surfaces every frame when a reusable surface will work.
+* Use sprite groups for many similar objects.
+* Remove dead enemies, particles, and projectiles from their collections.
+* Limit the frame rate with `clock.tick(FPS)`.
+* Draw only what is visible when working with very large levels.
+* Keep update logic separate from drawing logic.
+
+
+35. CLEAN CODE ORGANIZATION
+---------------------------
+
+A useful arrangement for a growing game is:
+
+    # Imports
+    # Constants and colors
+    # Asset paths
+    # Classes
+    # Helper functions
+    # Pygame initialization
+    # Asset loading
+    # Game state initialization
+    # Main loop
+    # Pygame shutdown
+
+Keep each function focused:
+
+* `handle_events()` handles keyboard, mouse, and window events.
+* `update_player()` handles player movement and collisions.
+* `update_enemies()` handles enemy behavior.
+* `draw_game()` draws the current frame.
+* `draw_ui()` draws score, health, and other interface elements.
+* `reset_level()` restores the level after the player loses.
+
+This makes the game easier to expand and debug.
