@@ -3,7 +3,7 @@
 # PyCharm (JetBrains)
 .idea/
 # Visual Studio Code
-.vs_code
+.vs_code/
 
 # Python caches and bytecode
 __pycache__/
@@ -214,6 +214,7 @@ cython_debug/
 tempCodeRunnerFile.py
 
 # Ruff stuff:
+.ruffcache/
 .ruff_cache/
 
 # PyPI configuration file
