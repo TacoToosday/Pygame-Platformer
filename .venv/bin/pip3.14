@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/edward_graham/coding/Python Platformer/.venv/bin/python" "$0" "$@"
-' '''
+#!/workspaces/Pygame-Platformer/.venv/bin/python
 import sys
 from pip._internal.cli.main import main
 if __name__ == '__main__':

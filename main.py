@@ -1,6 +1,7 @@
 # Main Python file for the platformer game
 import os
 import platform
+
 import pygame
 
 # Use a headless dummy video driver when running without a desktop display
