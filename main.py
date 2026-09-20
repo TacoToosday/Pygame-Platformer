@@ -42,7 +42,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    window.fill((0, 0, 0))
+    pygame.draw.rect(window, (255, 0, 0), (0, 0, 50, 30))  # Draw a red rectangle
     pygame.display.flip()
     clock.tick(60)  # Sets the FPS to 60
 
