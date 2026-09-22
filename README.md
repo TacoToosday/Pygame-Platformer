@@ -6,8 +6,8 @@ A platformer game built with Python and Pygame.
 
 ### Prerequisites
 
-- Python 3.10 or newer, ships with a Python 3.14.2 .venv
-- Pygame (.venv has installed)
+- Python 3.14.2
+- A virtual environment is recommended
 
 ### Installation
 
@@ -16,8 +16,13 @@ Clone the repository and install the project dependency:
 ```bash
 git clone https://github.com/TacoToosday/Pygame-Platformer.git
 cd Pygame-Platformer
-python -m pip install pygame
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
+
+On Windows, activate the virtual environment with
+`.venv\Scripts\activate` instead.
 
 ### Running the Game
 
