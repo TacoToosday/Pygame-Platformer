@@ -3,7 +3,7 @@
 # PyCharm (JetBrains)
 .idea/
 # Visual Studio Code
-.vs_code/
+.vscode/
 
 # Python caches and bytecode
 __pycache__/
