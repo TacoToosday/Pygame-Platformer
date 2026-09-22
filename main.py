@@ -28,6 +28,7 @@ pygame.init()
 # Creation of the game window, and player
 WINDOW_WIDTH = 900
 WINDOW_HEIGHT = 800
+GROUND_HEIGHT = 50
 
 try:  # Create the game window and handle potential errors
     window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -88,6 +89,10 @@ while running:
     handle_character_movement(player_rect, player_speed * dt)
 
     window.fill((30, 30, 30))
+    ground_rect = pygame.Rect(
+        0, WINDOW_HEIGHT - GROUND_HEIGHT, WINDOW_WIDTH, GROUND_HEIGHT
+    )
+    pygame.draw.rect(window, (0, 180, 0), ground_rect)
     drawMainChar(player_rect)
 
     pygame.display.flip()
