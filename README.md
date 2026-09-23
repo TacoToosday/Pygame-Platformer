@@ -38,4 +38,4 @@ Contributions and suggestions are welcome. Please open an issue to discuss subst
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the GNU License. See [LICENSE](LICENSE) for details.
