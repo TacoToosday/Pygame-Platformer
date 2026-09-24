@@ -32,8 +32,10 @@ GROUND_HEIGHT = 50
 
 player_speed = 200  # pixels per second
 gravity = 1200
-jumpStrength = -500
+jumpStrength = -700
 verticalVelocity = 0
+horizontalVelocity = 0
+is_on_ground = False
 
 try:  # Create the game window and handle potential errors
     window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -62,24 +64,52 @@ def drawMainChar(character_rect):
 
 
 # Movement handling
-def handle_character_movement(character_rect, speed, dt, ground_rect):
-    global verticalVelocity
+def handle_character_movement(
+    character_rect, speed, sinceLastFrame, platforms
+):
+    global horizontalVelocity, verticalVelocity, is_on_ground
 
     keys = pygame.key.get_pressed()
+    is_on_ground = False
 
+    horizontalVelocity = 0
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-        character_rect.x -= speed * dt
+        horizontalVelocity = -speed
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-        character_rect.x += speed * dt
+        horizontalVelocity = speed
+
+    # Move horizontally first, then bounce off platform sides.
+    charRect = character_rect.copy()
+    character_rect.x += horizontalVelocity * sinceLastFrame
+    for platform_rect in platforms:
+        if not character_rect.colliderect(platform_rect):
+            continue
+
+        if charRect.right <= platform_rect.left:
+            character_rect.right = platform_rect.left
+            horizontalVelocity = -abs(horizontalVelocity)
+        elif charRect.left >= platform_rect.right:
+            character_rect.left = platform_rect.right
+            horizontalVelocity = abs(horizontalVelocity)
 
     # Gravity
-    verticalVelocity += gravity * dt
-    character_rect.y += verticalVelocity * dt
+    charRect = character_rect.copy()
+    verticalVelocity += gravity * sinceLastFrame
+    character_rect.y += verticalVelocity * sinceLastFrame
 
-    # Stop the player if they are on the ground
-    if character_rect.colliderect(ground_rect):
-        character_rect.bottom = ground_rect.top
-        verticalVelocity = 0
+    # Land only when crossing a platform's top. If the player crosses the
+    # bottom while moving upward, bounce them back downward instead.
+    for platform_rect in platforms:
+        if not character_rect.colliderect(platform_rect):
+            continue
+
+        if charRect.bottom <= platform_rect.top and verticalVelocity >= 0:
+            character_rect.bottom = platform_rect.top
+            verticalVelocity = 0
+            is_on_ground = True
+        elif charRect.top >= platform_rect.bottom and verticalVelocity < 0:
+            character_rect.top = platform_rect.bottom
+            verticalVelocity = abs(verticalVelocity)
 
     # Keep the player inside the window bounds
     character_rect.x = max(
@@ -89,7 +119,7 @@ def handle_character_movement(character_rect, speed, dt, ground_rect):
 
 # Main game loop
 while running:
-    dt = clock.tick(60) / 1000.0  # Time since last frame in seconds
+    sinceLastFrame = clock.tick(60) / 1000.0  # Time since last frame in seconds
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -97,7 +127,7 @@ while running:
         if (
             event.type == pygame.KEYDOWN
             and event.key in (pygame.K_SPACE, pygame.K_w, pygame.K_UP)
-            and player_rect.bottom >= WINDOW_HEIGHT - GROUND_HEIGHT
+            and is_on_ground
         ):
             verticalVelocity = jumpStrength
 
@@ -105,10 +135,23 @@ while running:
     ground_rect = pygame.Rect(  # The Ground
         0, WINDOW_HEIGHT - GROUND_HEIGHT, WINDOW_WIDTH, GROUND_HEIGHT
     )
+    
+    testingLevel_rect = pygame.Rect(  # A testing platform
+        100, WINDOW_HEIGHT - GROUND_HEIGHT - 150, 200, 50
+    )
+
+    window.fill("skyblue")
     pygame.draw.rect(window, (0, 180, 0), ground_rect)
+    pygame.draw.rect(window, (180, 180, 180), testingLevel_rect)
+    
     drawMainChar(player_rect)
 
-    handle_character_movement(player_rect, player_speed, dt, ground_rect)
+    handle_character_movement(
+        player_rect,
+        player_speed,
+        sinceLastFrame,
+        [ground_rect, testingLevel_rect],
+    )
 
     pygame.display.flip()
 
