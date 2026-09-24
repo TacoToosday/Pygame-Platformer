@@ -25,10 +25,15 @@ pygame.init()
 #     os.path.join(assets, "player.png")
 # ).convert_alpha()
 
-# Creation of the game window, and player
+# Variables and constants
 WINDOW_WIDTH = 900
 WINDOW_HEIGHT = 800
 GROUND_HEIGHT = 50
+
+player_speed = 200  # pixels per second
+gravity = 1200
+jumpStrength = -500
+verticalVelocity = 0
 
 try:  # Create the game window and handle potential errors
     window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -45,10 +50,10 @@ clock = pygame.time.Clock()
 
 # Functions here
 
+
 # Create the main character as a visible rectangle on the screen
 player_rect = pygame.Rect(0, 0, 50, 50)
 player_rect.center = window.get_rect().center
-player_speed = 200  # pixels per second
 
 
 # Draw the main character
@@ -57,24 +62,28 @@ def drawMainChar(character_rect):
 
 
 # Movement handling
-def handle_character_movement(character_rect, speed):
+def handle_character_movement(character_rect, speed, dt, ground_rect):
+    global verticalVelocity
+
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_UP] or keys[pygame.K_w]:
-        character_rect.y -= speed
-    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-        character_rect.y += speed
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-        character_rect.x -= speed
+        character_rect.x -= speed * dt
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-        character_rect.x += speed
+        character_rect.x += speed * dt
 
-    # Keep the character inside the window bounds
+    # Gravity
+    verticalVelocity += gravity * dt
+    character_rect.y += verticalVelocity * dt
+
+    # Stop the player if they are on the ground
+    if character_rect.colliderect(ground_rect):
+        character_rect.bottom = ground_rect.top
+        verticalVelocity = 0
+
+    # Keep the player inside the window bounds
     character_rect.x = max(
         0, min(character_rect.x, WINDOW_WIDTH - character_rect.width)
-    )
-    character_rect.y = max(
-        0, min(character_rect.y, WINDOW_HEIGHT - character_rect.height)
     )
 
 
@@ -85,15 +94,21 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    handle_character_movement(player_rect, player_speed * dt)
+        if (
+            event.type == pygame.KEYDOWN
+            and event.key in (pygame.K_SPACE, pygame.K_w, pygame.K_UP)
+            and player_rect.bottom >= WINDOW_HEIGHT - GROUND_HEIGHT
+        ):
+            verticalVelocity = jumpStrength
 
     window.fill((30, 30, 30))
-    ground_rect = pygame.Rect(
+    ground_rect = pygame.Rect(  # The Ground
         0, WINDOW_HEIGHT - GROUND_HEIGHT, WINDOW_WIDTH, GROUND_HEIGHT
     )
     pygame.draw.rect(window, (0, 180, 0), ground_rect)
     drawMainChar(player_rect)
+
+    handle_character_movement(player_rect, player_speed, dt, ground_rect)
 
     pygame.display.flip()
 
