@@ -45,6 +45,7 @@ clock = pygame.time.Clock()
 TILE_SIZE = 50
 PLAYER_COLOR = (255, 0, 0)
 
+
 # Main player and platform class and logic
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprites):
@@ -71,9 +72,8 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 0
 
         if (
-            (keys[pygame.K_SPACE] or keys[pygame.K_w] or keys[pygame.K_UP])
-            and self.on_floor
-        ):
+            keys[pygame.K_SPACE] or keys[pygame.K_w] or keys[pygame.K_UP]
+        ) and self.on_floor:
             self.direction.y = -self.jump_speed
 
     def horizontal_collisions(self):
@@ -119,12 +119,8 @@ class Platform(pygame.sprite.Sprite):
 all_sprites = pygame.sprite.Group()
 collision_sprites = pygame.sprite.Group()
 
-ground_rect = pygame.Rect(
-    0, WINDOW_HEIGHT - GROUND_HEIGHT, WINDOW_WIDTH, GROUND_HEIGHT
-)
-testingLevel_rect = pygame.Rect(
-    100, WINDOW_HEIGHT - GROUND_HEIGHT - 150, 200, 50
-)
+ground_rect = pygame.Rect(0, WINDOW_HEIGHT - GROUND_HEIGHT, WINDOW_WIDTH, GROUND_HEIGHT)
+testingLevel_rect = pygame.Rect(100, WINDOW_HEIGHT - GROUND_HEIGHT - 150, 200, 50)
 Platform(ground_rect, (0, 180, 0), (all_sprites, collision_sprites))
 Platform(testingLevel_rect, (180, 180, 180), (all_sprites, collision_sprites))
 
