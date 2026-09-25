@@ -54,9 +54,9 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=pos)
 
         self.direction = pygame.math.Vector2()
-        self.speed = 8
+        self.speed = 5
         self.gravity = 0.8
-        self.jump_speed = 16
+        self.jump_speed = 18
         self.collision_sprites = collision_sprites
         self.on_floor = False
 
